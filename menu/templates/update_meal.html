@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% include 'css_urls.html' %}
+
+  <title>تعديل وجية</title>
+</head>
+<body>
+
+  <div class=" mx- px-5 mydiv">
+    <div class="row justify-content-lg-center">
+
+        <div class="col-md-5">
+          <!-- bbb_deals -->
+          <div class="bbb_deals">
+
+              <div class="bbb_deals_slider_container">
+                  <div class=" bbb_deals_item" >
+                    <div class="bbb_deals_image fs-3 text-warning" style="text-align: center;">تعديل بينات وجبة  </div>
+                    {% if success_msg %}
+                    <div style="text-align: center;font-size: 13px;background-color: white; "  class="alert mx-5 alert-success px-2 py-3 mt-2 text-success" role="alert">{{success_msg}}</div>
+                      {% elif error_msg %}
+                    <div style="text-align: center;font-size: 13px;background-color: white; "  class="alert mx-5 alert-danger px-2 py-3 mt-2 text-danger" role="alert">{{error_msg}}</div>
+
+                  {% endif %}
+                    <form action="{% url 'update_meal' %}" enctype="multipart/form-data"  method='post'>
+                      {% csrf_token %} 
+                      <div class="bbb_deals_content">
+
+                          <div class="form-outline mt-2  justify-content-start">
+                            <label class="form-label col-lg-3" for="textAreaExample">إسم الوجبة </label>
+                            <input type="text" class="form-control" name='meal_name' value="{{ meal.meal_name }}"/>
+                          </div> 
+                          <div class="form-outline mt-2  justify-content-start">
+                            <label class="form-label col-lg-2" for="textAreaExample">السعر</label>
+                            <div class="col-12 row justify-content-start">
+                              <input type="number" class="form-control col-11" name='price'  value="{{ meal.price }}" />
+                              <span class="col-1 align-self-center  fs-6" >ر.ي</span>
+                             </div>
+                          </div>                          <div class="available">
+                            <div class="form-outline mt-3  justify-content-start">
+                                <label class="form-label col-lg-2" for="textAreaExample">الوصف</label>
+                                <textarea name='describe' class="form-control" id="textAreaExample1" rows="4">{{ meal.describe }}</textarea>
+                              </div>
+                              
+                              <div class="form-outline mt-3  justify-content-start">
+                                <label class="form-label col-lg-3" for="textAreaExample">نوع الوجبة</label>
+                                <select class="form-select " name="category">
+                                    <option value="foods">أطعمه</option>
+                                    <option value="drinks">مشروبات</option>
+                                    <option value="sweet">حلوبات</option>
+                                  </select>
+                                </div>
+                           
+                                <div class="form-outline mt-3  justify-content-start ">
+                                    <label class="form-label col-lg-4 align-self-end" for="textAreaExample">صورة الوجبة </label>
+                                    <input type="file" class="form-control" name='image'  />
+                                  </div> 
+                                  <div class="available_line mt-5 d-flex row justify-content-lg-center  ">
+
+                                    <button class="btn mt-5 btn-warning text-light col-lg-3" dir="ltr">تعديل </button>
+
+                                  </div>
+
+                 
+                         
+                      </div>
+                  </div>
+                </form>
+
+
+                </div>
+                 </div>
+                          
+         
+          </div>
+          
+      </div>
+
+
+    </div>
+
+
+    </div>
+</div>
+
+
+
+
+  {% include 'js_urls.html' %}
+
+</body>
+</html>

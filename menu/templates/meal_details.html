@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% include 'css_urls.html' %}
+
+  <title>تفاصيل </title>
+</head>
+<body>
+    <div class=" mt-5 mx-2 mydiv">
+        <div class="row justify-content-center">
+    
+            <div class="col-4">
+              <!-- bbb_deals -->
+              <div class="bbb_deals">
+    
+                  <div class="bbb_deals_slider_container">
+                      <div class=" bbb_deals_item" style="text-align: center;">
+                        <div class="bbb_deals_image "> <img style="border-radius: 10px;" height="450px"   src="http://127.0.0.1:8000/media/{{meal.image}}" alt=""> </div>
+                        <div class="bbb_deals_content" >
+    
+                            <div class="bbb_deals_info_line d-flex flex-row justify-content-center" style="text-align: center;">
+                                <div class="bbb_deals_item_name text-success fs-6">{{ meal.meal_name }}</div>
+                            </div>
+                            <div class="bbb_deals_item_price ml-auto text-success fs-6">{{ meal.price }} ر.ي</div>
+                            <div class="available">
+                                <div class="available_line row d-flex flex-row justify-content-center">
+                                    <div class="available_title fs-9">الوصف: <span>{{ meal.describe }}</span></div>
+                                    <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                </div>
+                                  <div class="available_line mt-5 d-flex row justify-content-center">
+                                    <a href='{% url 'update_meal' %}?i={{meal.id}}' class=" col-lg-2 "  dir="ltr"> <img width='30px' height='30px' src="{% static '../static/images/edit.png' %} " alt=""> </a>   
+        
+                                    <a data-bs-toggle="modal" data-bs-target="#deletModal" href='#'  class=" col-lg-2"  dir="ltr"> <img width='30px' height='30px' src="{% static '../static/images/delete.png' %} " alt=""> </a>   
+                                </div>
+                                {% include 'delete_meal.html' %}                           
+                              </div>
+                             
+                          </div>
+                         
+                      </div>
+                  </div>
+              
+              </div>
+              
+          </div>
+    
+    
+        </div>
+    
+    
+        </div>
+    </div>
+
+
+
+  {% include 'js_urls.html' %}
+
+</body>
+</html>
+
+

@@ -1,0 +1,94 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	{% include 'css_urls.html' %}
+
+  <title>الصفحة الرئيسية</title>
+</head>
+<body>
+  <div class="mydiv">
+    <nav class="  navbar navbar-expand-lg bg-black mb-2 py-3 rounded" aria-label="Thirteenth navbar example">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+          <a class="navbar-brand col-lg-3 text-info me-0 fs-3 text-warning" href="{% url 'home' %}">Restaurant</a>
+          <ul class="navbar-nav col-lg-6 text-light justify-content-lg-center">
+            <li class="nav-item">
+              <a class="nav-link active text-light" aria-current="page" href="{% url 'home' %}?c=1">الماكولات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="{% url 'home' %}?c=2">المشروبات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="{% url 'home' %}?c=3">الحلويات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-warning" href="{% url 'logout' %}">تسجيل الخروج</a>
+            </li>
+
+          </ul>
+          <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+            <a href="{% url 'add_meal' %}" class="btn btn-outline-warning text-warning">منتج جديد + </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="row ">
+      {% for meal in meals %}
+     
+        <div class="col-2 mt-2">
+        <div class="bbb_deals">
+            <div class="bbb_deals_slider_container">
+                <div class=" bbb_deals_item" style="text-align: center;">
+                    <div class="bbb_deals_image "> <img style="border-radius: 10px;" height="150px"   src="http://127.0.0.1:8000/media/{{meal.image}}" alt=""> </div>
+                    <div class="bbb_deals_content" >
+
+                        <div class="bbb_deals_info_line d-flex flex-row justify-content-center" style="text-align: center;">
+                            <div class="bbb_deals_item_name text-success fs-6">{{ meal.meal_name }}</div>
+                        </div>
+                        <div class="bbb_deals_item_price ml-auto text-success fs-6">{{ meal.price }} ر.ي</div>
+                        <div class="available">
+                            <div class="available_line d-flex row flex-row justify-content-center">
+                                <div class="available_title fs-9">الوصف: <span>{{ meal.describe }}</span></div>
+                                <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                            </div>
+
+                    <a href="{% url 'meal_details' %}?i={{meal.id}}" style="text-align: end;" type="submit" class="btn  mt-5 btn-warning btn-sm text-light" dir="ltr">تفاصيل </a>
+                            
+                        </div>
+                       
+                    </div>
+                   
+                </div>
+            </div>
+        
+        </div>
+        
+    </div>
+      {% endfor %}
+
+
+
+    </div>
+
+
+    </div>
+</div>
+
+{{category_list}}
+{% include 'js_urls.html' %}
+
+</body>
+</html>
+
+
